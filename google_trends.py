@@ -27,12 +27,3 @@ def gtrends(date=None, country='US', language='en-US', timezone='-180'): # timez
         t = r['title']['query']
         res.append(t)  
     return res
-
-
-r = gtrends()
-print(r)
-
-
-
-
-
