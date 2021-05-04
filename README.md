@@ -1,6 +1,6 @@
 ## google_trends
 
-simple Google Trends API
+Simple Google Trends API
 
 ---
 ### Usage:
