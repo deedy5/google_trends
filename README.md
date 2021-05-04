@@ -1,12 +1,11 @@
-##google_trends
+## google_trends
 
 simple Google Trends API
 
 ---
-
 ### Usage:
-```
-gtrends(date=None, country='US', language='en-US', timezone='-420')
+```python
+gtrends(date=None, country='US', language='en-US', timezone='-180')
     '''
     date = date of interest, allowable interval: today - 30 days ago;
     country = two letter country abbreviation;
@@ -14,20 +13,19 @@ gtrends(date=None, country='US', language='en-US', timezone='-420')
                                 GMT-8 == -8*60 = '-480';
     language = language.
     '''
-```    
+ 
+ 
 gtrends()
-# realtime trends
-
+#realtime trends
 
 gtrends(date=YYYYMMDD)
-# trends on a given date, interval: today - 30 days ago.
+#trends on a given date, interval: today - 30 days ago.
 ```
-===================================================================='
-
+---
 ### Example
 
 realtime trends
-```
+```python
 r = gtrends()
 print(r)
 ```
