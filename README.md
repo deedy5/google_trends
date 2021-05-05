@@ -26,6 +26,6 @@ gtrends(date=None, country='US', language='en-US', timezone='-180')
 gtrends()
 #realtime trends
 
-gtrends(date=YYYYMMDD)
+gtrends(YYYYMMDD)
 #trends on a given date, interval: today - 30 days ago.
 ```
