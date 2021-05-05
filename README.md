@@ -28,7 +28,7 @@ r = gtrends()
 print(r)
 ```
 
-trends on dates
+trends on date
 ```python
 date = 20210502
 r = gtrends(date)
