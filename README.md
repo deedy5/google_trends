@@ -30,8 +30,7 @@ print(r)
 
 trends on dates
 ```python
-dates = [20210502, 20210501, 20210430, 20210429]
-for date in dates:
-    print(date)
-    print(gtrends(date=date))
+date = 20210502
+r = gtrends(date)
+print(r)
 ```
