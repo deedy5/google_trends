@@ -2,6 +2,13 @@
 
 Simple Google Trends API
 
+
+### Install
+
+```
+pip install -U google_trends
+```
+
 ### Usage:
 ```python
 gtrends(date=None, country='US', language='en-US', timezone='-180')
