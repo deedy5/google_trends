@@ -1,7 +1,7 @@
 import json
 import requests
 
-__version__ = 0.4
+__version__ = 0.5
 
 def _get_json(date, country, language, timezone): # timezone '-420'(GMT-7 == -7*60)
     # get json from google trends    
