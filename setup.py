@@ -8,7 +8,6 @@ setup(
     name="google_trends",
     version=__version__,
     author="deedy5",
-    author_email="deedy-ru@ya.ru",
     description="simple Google Trends API",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -17,7 +16,7 @@ setup(
     py_modules=["google_trends"],
     install_requires=["requests>=2.25.0"],
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
