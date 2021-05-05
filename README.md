@@ -29,17 +29,3 @@ gtrends()
 gtrends(date=YYYYMMDD)
 #trends on a given date, interval: today - 30 days ago.
 ```
-### Example
-
-realtime trends
-```python
-r = gtrends()
-print(r)
-```
-
-trends on date
-```python
-date = 20210502
-r = gtrends(date)
-print(r)
-```
