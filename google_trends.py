@@ -1,7 +1,7 @@
 import json
 import requests
 
-__version__ = 0.1
+__version__ = 0.2
 
 def _get_json(date, country, language, timezone): # timezone '-420'(GMT-7 == -7*60)
     # get json from google trends    
@@ -13,7 +13,8 @@ def _get_json(date, country, language, timezone): # timezone '-420'(GMT-7 == -7*
         }
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0"}
     r = requests.get("https://trends.google.com/trends/api/dailytrends", headers=headers, params=params)
-    r = r.text[6:]
+    i = r.text.index('{')
+    r = r.text[i:]
     r = json.loads(r)    
     return r
 
