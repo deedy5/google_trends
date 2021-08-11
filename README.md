@@ -1,3 +1,4 @@
+[![Python >= 3.6](https://img.shields.io/badge/python->=3.6-red.svg)](https://www.python.org/downloads/) [![](https://badgen.net/github/release/deedy5/google_trends)](https://github.com/deedy5/google_trends/releases) [![](https://badge.fury.io/py/google_trends.svg)](https://pypi.org/project/google_trends)
 ## google_trends
 
 Simple Google Trends API
