@@ -1,7 +1,7 @@
 import json
 import requests
 
-__version__ = 0.6.1
+__version__ = 0.7
 
 def gtrends(*args, **kwargs):
     print("Function 'gtrends' is deprecated: renamed to 'daily_trends'")
