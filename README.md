@@ -23,8 +23,6 @@ def daily_trends(date=None, country='US', language='en-US', timezone='-180'):
     date = YYYYMMDD (example: 20210810) - trends on a given date, 
     interval: today - 30 days ago;
     country = 'US', 'RU', etc.;
-    category = 'all' (all), 'b' (business), 'e' (entertainment), 
-    'm' (health), 's' (sports), 't' (sci/tech), 'h' (top stories);
     language = 'en-US', 'ru-RU', etc.;
     timezone = timezone offset, example: GMT-7 == -7*60 = '-420'.
     '''
@@ -44,7 +42,8 @@ def realtime_trends(country='US', category='all', language='en-US', num_results=
     ''' Google realtime search trends
 
     country = 'US', 'RU', etc.;
-    category = 'all' (all), 'b' (business), 'e' (entertainment), 'h' (health), 's' (sports), 't' (top stories)
+    category = 'all' (all), 'b' (business), 'e' (entertainment), 
+    'm' (health), 's' (sports), 't' (sci/tech), 'h' (top stories);
     language = 'en-US', 'ru-RU', etc.;
     num_results = how many results to return, max num_results = 200;
     timezone = timezone offset, example: GMT-7 == -7*60 = '-420'.
