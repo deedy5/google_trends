@@ -20,9 +20,11 @@ from google_trends import daily_trends, realtime_trends
 def daily_trends(date=None, country='US', language='en-US', timezone='-180'):
     ''' Google daily search trends
     
-    date = YYYYMMDD (example: 20210810) - trends on a given date, interval: today - 30 days ago;
+    date = YYYYMMDD (example: 20210810) - trends on a given date, 
+    interval: today - 30 days ago;
     country = 'US', 'RU', etc.;
-    category = 'all' (all), 'b' (business), 'e' (entertainment), 'h' (health), 's' (sports), 't' (top stories)
+    category = 'all' (all), 'b' (business), 'e' (entertainment), 
+    'm' (health), 's' (sports), 't' (sci/tech), 'h' (top stories);
     language = 'en-US', 'ru-RU', etc.;
     timezone = timezone offset, example: GMT-7 == -7*60 = '-420'.
     '''
