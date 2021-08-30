@@ -17,7 +17,7 @@ from google_trends import daily_trends, realtime_trends
 ```
 **1. Google daily search trends**
 ```python3
-def daily_trends(date=None, country='US', language='en-US', timezone='-180'):
+daily_trends(date=None, country='US', language='en-US', timezone='-180')
     ''' Google daily search trends
     
     date = YYYYMMDD (example: 20210810) - trends on a given date, interval: today - 30 days ago;
@@ -37,7 +37,7 @@ print(date_trends)
 ---
 **2. Google realtime search trends**
 ```python3
-def realtime_trends(country='US', category='all', language='en-US', num_results=20, timezone='-180'):
+realtime_trends(country='US', category='all', language='en-US', num_results=20, timezone='-180')
     ''' Google realtime search trends
 
     country = 'US', 'RU', etc.;
