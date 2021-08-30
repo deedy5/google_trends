@@ -1,7 +1,7 @@
 import json
 import requests
 
-__version__ = 0.7
+__version__ = 0.8
 
 def gtrends(*args, **kwargs):
     print("Function 'gtrends' is deprecated: renamed to 'daily_trends'")
@@ -9,7 +9,6 @@ def gtrends(*args, **kwargs):
 
 def daily_trends(date=None, country='US', language='en-US', timezone='-180'):
     ''' Google daily search trends
-
     date = YYYYMMDD, example: 20210810, trends on a given date, interval: today - 30 days ago;
     country = 'US', 'RU', etc.;
     language = 'en-US', 'ru-RU', etc.;
@@ -42,7 +41,7 @@ def realtime_trends(country='US', category='all', language='en-US', num_results=
     category = 'all' (all), 'b' (business), 'e' (entertainment), 
                'm' (health), 's' (sports), 't' (sci/tech), 'h' (top stories);
     language = 'en-US', 'ru-RU', etc.;
-    num_results = how many results to return, max num_results = 200;
+    num_results = how many results to return, max num_results = 64;
     timezone = timezone offset, example: GMT-7 == -7*60 = '-420'.
     '''
     
@@ -62,13 +61,27 @@ def realtime_trends(country='US', category='all', language='en-US', num_results=
     i = r.text.index('{')
     r = r.text[i:]
     r = json.loads(r)
-    data = r["storySummaries"]["trendingStories"]
+    
+    trending_story_ids = r["trendingStoryIds"]
     res = []
-    for element in data:
-        t = {
-        "title": element["title"],
-        "entity_names": element["entityNames"],
-        "article_urls": [x["url"] for x in element["articles"]],
-        }
+    for i in range(num_results):
+        t = _get_realtime_trend(trending_story_ids[i], language=language, timezone=timezone)
         res.append(t)
     return res
+
+def _get_realtime_trend(trending_story_id, language='en-US', timezone='-180'):
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0"}
+    params = {
+        'hl': language,
+        'tz': timezone,
+        }
+    r = requests.get(f'https://trends.google.com/trends/api/stories/{trending_story_id}', headers=headers, params=params)
+    i = r.text.index('{')
+    r = r.text[i:]
+    r = json.loads(r)
+    t = {
+        "title": r["title"],
+        "entity_names": r["entityNames"],
+        "article_urls": [x["url"] for x in r["widgets"][0]["articles"]],
+        }
+    return t
