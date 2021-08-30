@@ -44,7 +44,7 @@ def realtime_trends(country='US', category='all', language='en-US', num_results=
     category = 'all' (all), 'b' (business), 'e' (entertainment), 
                'm' (health), 's' (sports), 't' (sci/tech), 'h' (top stories);
     language = 'en-US', 'ru-RU', etc.;
-    num_results = how many results to return, max num_results = 200;
+    num_results = how many results to return, max num_results = 64;
     timezone = timezone offset, example: GMT-7 == -7*60 = '-420'.
     '''
  
