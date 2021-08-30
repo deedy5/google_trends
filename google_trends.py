@@ -35,7 +35,7 @@ def daily_trends(date=None, country='US', language='en-US', timezone='-180'):
     return res
 
 def realtime_trends(country='US', category='all', language='en-US', num_results=20, timezone='-180'):
-    ''' Google daily search trends
+    ''' Google realtime search trends
     
     country = 'US', 'RU', etc.;
     category = 'all' (all), 'b' (business), 'e' (entertainment), 
