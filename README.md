@@ -43,6 +43,7 @@ realtime_trends(country='US', category='all', language='en-US', num_results=20, 
     country = 'US', 'RU', etc.;
     category = 'all' (all), 'b' (business), 'e' (entertainment), 
                'm' (health), 's' (sports), 't' (sci/tech), 'h' (top stories);
+               if specific categories do not work, leave category='all' or 'h';
     language = 'en-US', 'ru-RU', etc.;
     num_results = how many results to return, max num_results = 64;
     timezone = timezone offset, example: GMT-7 == -7*60 = '-420'.
