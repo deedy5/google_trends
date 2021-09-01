@@ -1,7 +1,7 @@
 import json
 import requests
 
-__version__ = 0.9
+__version__ = '0.9.1'
 
 def gtrends(*args, **kwargs):
     print("Function 'gtrends' is deprecated: renamed to 'daily_trends'")
@@ -40,9 +40,8 @@ def realtime_trends(country='US', category='all', language='en-US', num_results=
     country = 'US', 'RU', etc.;
     category = 'all' (all), 'b' (business), 'e' (entertainment), 
                'm' (health), 's' (sports), 't' (sci/tech), 'h' (top stories);
-               if specific categories do not work, leave category='all' or 'h';
     language = 'en-US', 'ru-RU', etc.;
-    num_results = how many results to return, max num_results = 64;
+    num_results = how many results to return, max num_results = 200;
     timezone = timezone offset, example: GMT-7 == -7*60 = '-420'.
     '''
     
@@ -65,9 +64,10 @@ def realtime_trends(country='US', category='all', language='en-US', num_results=
     
     trending_story_ids = r["trendingStoryIds"]
     res = []
-    for i in range(min(num_results, 64)):
+    for i in range(min(num_results, len(trending_story_ids))):
         t = _get_realtime_trend(trending_story_ids[i], language=language, timezone=timezone)
-        res.append(t)
+        if t:
+            res.append(t)
     return res
 
 def _get_realtime_trend(trending_story_id, language='en-US', timezone='-180'):
