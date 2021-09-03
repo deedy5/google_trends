@@ -1,7 +1,7 @@
 import json
 import requests
 
-__version__ = '0.9.1'
+__version__ = '0.9.2'
 
 def gtrends(*args, **kwargs):
     print("Function 'gtrends' is deprecated: renamed to 'daily_trends'")
@@ -61,14 +61,25 @@ def realtime_trends(country='US', category='all', language='en-US', num_results=
     i = r.text.index('{')
     r = r.text[i:]
     r = json.loads(r)
-    
-    trending_story_ids = r["trendingStoryIds"]
+    data = r["storySummaries"]["trendingStories"]
     res = []
-    for i in range(min(num_results, len(trending_story_ids))):
-        t = _get_realtime_trend(trending_story_ids[i], language=language, timezone=timezone)
-        if t:
-            res.append(t)
-    return res
+    for element in data:
+        t = {
+        "title": element["title"],
+        "entity_names": element["entityNames"],
+        "article_urls": [x["url"] for x in element["articles"]],
+        }
+        res.append(t)
+    if len(res) >= num_results:
+        return res
+    else:
+        trending_story_ids = r["trendingStoryIds"]
+        res = []
+        for i in range(min(num_results, len(trending_story_ids))):
+            t = _get_realtime_trend(trending_story_ids[i], language=language, timezone=timezone)
+            if t:
+                res.append(t)
+        return res
 
 def _get_realtime_trend(trending_story_id, language='en-US', timezone='-180'):
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0"}
