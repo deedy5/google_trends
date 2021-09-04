@@ -37,7 +37,7 @@ print(date_trends)
 ---
 **2. Google realtime search trends**
 
-***Attention! Google realtime trends are not available for all regions. The list of available countries can be viewed on the website: https://trends.google.com/trends/trendingsearches/realtime.***
+***Attention!*** *Google realtime trends are not available for all regions. The list of available countries can be viewed on the website: https://trends.google.com/trends/trendingsearches/realtime.*
 ```python3
 realtime_trends(country='US', language='en-US', category='all', num_results=20, timezone='-180')
     ''' Google realtime search trends
