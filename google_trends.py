@@ -1,7 +1,7 @@
 import json
 import requests
 
-__version__ = '1.0'
+__version__ = '1.0.1'
 
 def gtrends(*args, **kwargs):
     print("Function 'gtrends' is deprecated: renamed to 'daily_trends'")
@@ -14,12 +14,20 @@ def daily_trends(date=None, country='US', language='en-US', timezone='-180'):
     language = 'en-US', 'ru-RU', etc.;
     timezone = timezone offset, example: GMT-7 == -7*60 = '-420'.
     '''    
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0"}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0",
+               "Accept": "application/json, text/plain, */*",
+               "Origin": "https://trends.google.com",
+               "DNT": "1",
+               "Connection": "keep-alive",
+               "Referer": f"https://trends.google.com/trends/trendingsearches/daily?geo={country}",
+               "Cache-Control": "max-age=0",
+               "TE": "Trailers",}
     params = {
         'hl': language,
         'tz': timezone,
         'ed': date,
         'geo': country,
+        'ns': '15',
         }    
     r = requests.get("https://trends.google.com/trends/api/dailytrends", headers=headers, params=params)
     i = r.text.index('{')
@@ -43,7 +51,11 @@ def realtime_trends(country='US', category='all', language='en-US', num_results=
     timezone = timezone offset, example: GMT-7 == -7*60 = '-420'.
     '''
     with requests.Session() as s:
-        s.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0"})
+        s.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0",
+                          "Accept": "application/json, text/plain, */*",
+                          "DNT": "1",
+                          "Connection": "keep-alive",
+                          "Referer": f"https://trends.google.com/trends/trendingsearches/realtime?geo={country}&category={category}",})
         params = {
             'hl': language,
             'tz': timezone,
