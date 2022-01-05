@@ -8,7 +8,7 @@ setup(
     name="google_trends",
     version=__version__,
     author="deedy5",
-    author_email="deedy-ru@ya.ru",
+    author_email="",
     description="simple Google Trends API",
     long_description=long_description,
     long_description_content_type="text/markdown",
